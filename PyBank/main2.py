@@ -36,6 +36,7 @@ with open(budget_data_csv) as csvfile:
         previous_profitlosses = profitlosses
 
     average_change = sum(changes) / (total_months-1)
+    formatted_average_change = "{:.2f}".format(average_change)
     
     # greatest increase in profits (date and amount) over the entire period
     greatest_increase = max(changes)
@@ -52,10 +53,23 @@ with open(budget_data_csv) as csvfile:
 
 
 
+financial_analysis_csv = pathlib.Path('PyBank/Analysis/PyBank_analysis.txt')
 
-print("Financial Anaysis")
-print("------------------")
-print(total_months)
-print(total_profitlosses)
-print(average_change)
-print(changes)
+
+with open(financial_analysis_csv,'w') as outputfile:
+    #csvwriter = csv.writer(outputfile)
+    financial_analysis = (
+    f"\n\nFinancial Analysis\n"
+    f"-------------------------\n"
+    f"Total Months: {total_months}\n"
+    f"Total: ${total_profitlosses}\n"
+    f"Average Change: ${formatted_average_change}\n"
+    f"Greatest Increase: {greatest_increase_month} (${greatest_increase})\n"
+    f"Greatest Decrease: {greatest_decrease_month} (${greatest_decrease})\n"
+    )
+    print(financial_analysis, end="")
+
+    outputfile.write(financial_analysis)
+
+
+
