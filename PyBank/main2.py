@@ -52,7 +52,7 @@ with open(budget_data_csv) as csvfile:
     print(greatest_decrease_month)
 
 
-
+# exporting to a text file and printing out 
 financial_analysis_csv = pathlib.Path('PyBank/Analysis/PyBank_analysis.txt')
 
 

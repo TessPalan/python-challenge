@@ -23,13 +23,13 @@ with open(election_data_csv) as csvfile:
         else:
             votes[candidate_name] = 1
 
-   # print(votes)
     vote_counts = (list(votes.values()))
 
     # total number of votes cast 
     total_count = sum(vote_counts)
     #print(total_count)
 
+# total number of votes each candidate won, percentage and winner 
 winner = list(votes.keys())[0]
 votes_summary = {}
 for candidate in votes.keys():
@@ -42,6 +42,7 @@ for candidate in votes.keys():
         votes_summary[candidate]["is_winner"] = False
 
 
+# exporting to a text file and printing out 
 election_results_csv = pathlib.Path('PyPoll/Analysis/PyPoll_analysis.txt')
 
 
